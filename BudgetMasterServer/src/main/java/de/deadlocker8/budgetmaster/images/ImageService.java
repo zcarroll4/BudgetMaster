@@ -4,6 +4,7 @@ import de.deadlocker8.budgetmaster.icon.Icon;
 import de.deadlocker8.budgetmaster.icon.IconService;
 import de.deadlocker8.budgetmaster.services.Resettable;
 import de.thecodelabs.utils.util.Localization;
+import io.github.pixee.security.Filenames;
 import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -73,7 +74,7 @@ public class ImageService implements Resettable
 	@Transactional
 	public void saveImageFile(MultipartFile file) throws IOException, InvalidFileExtensionException
 	{
-		final String originalFilename = file.getOriginalFilename();
+		final String originalFilename = Filenames.toSimpleFileName(file.getOriginalFilename());
 		final Optional<String> fileExtensionOptional = getFileExtension(originalFilename);
 		if(fileExtensionOptional.isEmpty())
 		{

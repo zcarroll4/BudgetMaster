@@ -58,6 +58,7 @@
         <assertj-core.version>3.24.2</assertj-core.version>
 
         <dependency-check-maven.version>8.3.1</dependency-check-maven.version>
+        <versions.java-security-toolkit>1.0.7</versions.java-security-toolkit>
     </properties>
 
     <dependencies>
@@ -131,4 +132,13 @@
             <url>https://maven.thecodelabs.de/artifactory/TheCodeLabs-snapshots</url>
         </snapshotRepository>
     </distributionManagement>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.github.pixee</groupId>
+                <artifactId>java-security-toolkit</artifactId>
+                <version>${versions.java-security-toolkit}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>

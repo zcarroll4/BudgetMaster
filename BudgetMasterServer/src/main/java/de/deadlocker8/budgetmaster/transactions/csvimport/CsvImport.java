@@ -1,5 +1,6 @@
 package de.deadlocker8.budgetmaster.transactions.csvimport;
 
+import io.github.pixee.security.Filenames;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
@@ -43,7 +44,7 @@ public record CsvImport(MultipartFile file, String separator, String encoding, i
 			return null;
 		}
 
-		final String fileName = file.getOriginalFilename();
+		final String fileName = Filenames.toSimpleFileName(file.getOriginalFilename());
 		if(fileName == null)
 		{
 			return file.getName();
